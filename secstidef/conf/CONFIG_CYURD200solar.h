@@ -4,6 +4,11 @@
   #include <TimeLib.h>
   #include <TimeAlarms.h>
   #include <ESP8266WebServer.h>
+  // #include <Arduino.h>//if CUSTOM CODE
+
+  /*INSTRUCTIONS
+  MODIFY this file where indicated for srs_t , prgs_t
+  */
 	
   #define sizeOf(a) (sizeof(a) / sizeof(a[0]))
 
@@ -79,11 +84,11 @@
   struct srs_t {
     int numsr;
     int numse;
-    se_t se[5];
+    se_t se[1];/*MODIFY*/
     int numcs;
-    cs_t cs[1];
+    cs_t cs[3];/*MODIFY*/
     int numti;
-    ti_t ti[2];
+    ti_t ti[0];/*MODIFY*/
   };
   extern srs_t srs;
    /*srs data structure declarations*/  
@@ -100,7 +105,7 @@
   };
   struct prgs_t{
     int numprgs;
-    prg_t prg[5];
+    prg_t prg[3];/*MODIFY*/
   };
   extern prgs_t prgs;
    /*prg data structure declarations*/  

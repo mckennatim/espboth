@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name esp8266v1-rescue)(type Legacy)(uri ${KIPRJMOD}/esp8266v1-rescue.lib)(options "")(descr ""))
+)

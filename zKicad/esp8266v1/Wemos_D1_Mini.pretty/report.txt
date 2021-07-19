@@ -1,0 +1,30 @@
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\sym-lib-table” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\sym-lib-table-2019-08-13-15-01-05”.
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\WemosD1Mini.sch” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\WemosD1Mini-2019-08-13-15-01-05.sch”.
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\WemosD1Mini.pro” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\WemosD1Mini-2019-08-13-15-01-05.pro”.
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\WemosD1Mini-cache.lib” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\WemosD1Mini-cache-2019-08-13-15-01-05.lib”.
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\WemosD1Mini-rescue.lib” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\WemosD1Mini-rescue-2019-08-13-15-01-05.lib”.
+Info: Backing up file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\WemosD1Mini-rescue.dcm” to file “D:\fs\pcb\kicad\ESP8266-Multisensor-Shield\KiCad_PCB_ESP8266_Multisensor_Shield\rescue-backup\WemosD1Mini-rescue-2019-08-13-15-01-05.dcm”.
+Info: Adding library “Wemos_D1_Mini”, file “${KIPRJMOD}/Wemos_D1_Mini.lib” to project symbol library table.
+Info: Adding library “ESP_32_Shield_Project”, file “${KIPRJMOD}/ESP_32_Shield_Project.lib” to project symbol library table.
+Symbol “WeMos_mini” mapped to symbol library “Wemos_D1_Mini”.
+Symbol “R” mapped to symbol library “Device”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “+3V3” mapped to symbol library “power”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “R_PHOTO” mapped to symbol library “Device”.
+Symbol “+3V3” mapped to symbol library “power”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “LED” mapped to symbol library “Device”.
+Symbol “R” mapped to symbol library “Device”.
+Symbol “+5V” mapped to symbol library “power”.
+Symbol “+5V” mapped to symbol library “power”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “PIR” mapped to symbol library “Wemos_D1_Mini”.
+Symbol “+3V3” mapped to symbol library “power”.
+Symbol “GND” mapped to symbol library “power”.
+Symbol “+3V3” mapped to symbol library “power”.
+Symbol “DS18B20” mapped to symbol library “Wemos_D1_Mini”.
+Symbol “R” mapped to symbol library “Device”.
+Symbol “RELAY_3_PINS” mapped to symbol library “Wemos_D1_Mini”.
+Info: Symbol library table mapping complete!

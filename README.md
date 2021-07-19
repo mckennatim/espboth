@@ -17,6 +17,18 @@ https://steve.fi/hardware/d1-pins/
 
 ## log
 
+### 7/15/21  15-secstidef-CYURD200solar
+secstidef stands for sensors, controlled sensors(like thermostats), timers and def(ault function) - the curent goal of modifying the code so it doesn't spin its wheels without the internet.
+
+To compile copy the contents of CONFIG_CYURD200solar.cpp and .h files into CONFIG.h and CONFIG.cpp in the src directory of espBoth/secstidef/ then compile. 
+
+I am using vscode with the platformio extension instead of the arduino gui.
+
+To work for the solar project it needs to also work as a differential controller, ie comparing two sensors.
+
+I put the pcb files in zKicad/esp8266v1. you would need to download kicad to mess with them
+
+
 ### 7/13/21 14-secstidef
 At the start of Tobin's solar project.
 

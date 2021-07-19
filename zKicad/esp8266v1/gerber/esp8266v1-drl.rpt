@@ -1,0 +1,26 @@
+Drill report for D:\fs\pcb\kicad\esp8266v1\esp8266v1.kicad_pcb
+Created on 8/15/2019 12:49:12 PM
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'esp8266v1-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.80mm  0.031"  (47 holes)
+    T2  0.90mm  0.035"  (10 holes)
+    T3  1.02mm  0.040"  (16 holes)
+    T4  1.52mm  0.060"  (30 holes)
+
+    Total plated holes count 103
+
+
+Drill file 'esp8266v1-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  2.70mm  0.106"  (4 holes)
+
+    Total unplated holes count 4
