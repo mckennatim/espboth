@@ -6,7 +6,8 @@
   #include <ESP8266WebServer.h>
   // #include <Arduino.h>//if CUSTOM CODE
 
-  /*INSTRUCTIONS
+  /*CONFI_CYUTD200solar.h
+  INSTRUCTIONS
   MODIFY this file where indicated for srs_t , prgs_t
   */
 	

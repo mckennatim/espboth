@@ -75,7 +75,7 @@ void setSrs(int srid, int reading){
     if(srs.cs[j].sr==srid){
       srs.cs[j].reading=reading;
       srs.cs[j].isnew=1;
-      sched.adjRelay(srid, srs.cs[j]);
+      sched.adjRelay(j, srs.cs[j]);
     }
   } 
 }
@@ -86,12 +86,12 @@ void setIfDif (int srid, int reading, int old, int dif, int hi, int lo){
     setSrs(srid, reading);
     int bit =pow(2,srid);
     f.HAYsTATEcNG=f.HAYsTATEcNG | bit; 
-    printf("Sensor %d: reading: %d  \n",srid, reading);
+    printf("Sensor %d: reading: %d  old: %d \n",srid, reading, old);
   }
 }
 
 void readSensors(){
-  int senvals[SE.numsens]; 
+  int senvals[SE.numsens]; //store readings here
   int sr;
   int old;
   for(int i=0;i<SE.numtypes;i++){//check all the types incl.
@@ -101,7 +101,7 @@ void readSensors(){
         sr = SE.stype[i].ids[j];
         old = req.getStoredReading(sr);
         senvals[sr] = (int)DS18B20a.getTempFByIndex(j);
-        setIfDif (sr, senvals[sr] , old, 1, 120, -20);
+        setIfDif (sr, senvals[sr] , old, 1, 220, -20);
       }
     }else if(strcmp(SE.stype[i].model, "DS18B20b")==0){
       for(int j=0;j<SE.stype[i].nums;j++) {
@@ -109,8 +109,8 @@ void readSensors(){
         DS18B20b.requestTemperatures(); 
         sr = SE.stype[i].ids[j];
         old = req.getStoredReading(sr);
-        senvals[sr] = (int)DS18B20a.getTempFByIndex(j);
-        setIfDif (sr, senvals[sr] , old, 1, 120, -20);
+        senvals[sr] = (int)DS18B20b.getTempFByIndex(j);
+        setIfDif (sr, senvals[sr] , old, 1, 220, -20);
       }
     }else if(strcmp(SE.stype[i].model, "BH1750")==0){
       int lux = (int)lightMeter.readLightLevel();
@@ -189,6 +189,7 @@ void setup(){
 time_t before = 0;
 time_t schedcrement = 0;
 time_t inow;
+int mqctr = 10;
 
 void loop() {
   Alarm.delay(100);
@@ -197,9 +198,14 @@ void loop() {
     req.processInc();
     NEW_MAIL=0;
   } 
+  
   if(!client.connected()){
-    Serial.println(owner);
-     mq.reconn(client);
+    mqctr -= 1;
+    if(mqctr >0){
+      Serial.print("mqctr = ");
+      Serial.println(mqctr);
+      mq.reconn(client);
+    }
   }else{
     client.loop();
   }  

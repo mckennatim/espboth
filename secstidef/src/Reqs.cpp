@@ -202,27 +202,64 @@ void Reqs::pubState(int hc){
   strcat(devtopic,"/srstate");  
   char payload[200];
   bool shouldrec = 0;
-  for( int i=0; i<srs.numsr; i++){
-    int bit =pow(2,i);
-    if((hc&bit)==bit){
-      iscsidx_t ici = getTypeIdx(i);
-      if (ici.srtype==0){//se
-        shouldrec = isNewRec(srs.se[ici.idx].rec, srs.se[ici.idx].isnew);
-        sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.se[ici.idx].sr, srs.se[ici.idx].reading, shouldrec);
-        srs.se[ici.idx].isnew=0;
-      }else if (ici.srtype==1){//cs
-        shouldrec = isNewRec(srs.cs[ici.idx].rec, srs.cs[ici.idx].isnew);
-        sprintf(payload, "{\"id\":%d, \"darr\":[%d, %d, %d, %d], \"new\":%d}", srs.cs[ici.idx].sr, srs.cs[ici.idx].reading, srs.cs[ici.idx].onoff, srs.cs[ici.idx].hilimit, srs.cs[ici.idx].lolimit, shouldrec);  
-        srs.cs[ici.idx].isnew=0;    
-      }else{//ti
-        shouldrec = isNewRec(srs.ti[ici.idx].rec, srs.ti[ici.idx].isnew);
-        sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.ti[ici.idx].sr, srs.ti[ici.idx].onoff, shouldrec);
-        srs.ti[ici.idx].isnew=0;
+    for (int i=0; i<srs.numse; i++){
+      shouldrec = isNewRec(srs.se[i].rec, srs.se[i].isnew);
+      sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.se[i].sr, srs.se[i].reading, shouldrec);
+      srs.se[i].isnew=0;
+      int bit =pow(2,i);
+      if((hc&bit)==bit){
+        clpub(devtopic, payload);
       }
-      clpub(devtopic, payload);
     }
-  }
+    for (int i=0; i<srs.numcs; i++){
+      shouldrec = isNewRec(srs.cs[i].rec, srs.cs[i].isnew);
+      // printf("i = %d srs.cs[i].hilimit = %d \n",i,srs.cs[i].hilimit);
+      sprintf(payload, "{\"id\":%d, \"darr\":[%d, %d, %d, %d], \"new\":%d}", srs.cs[i].sr, srs.cs[i].reading, srs.cs[i].onoff, srs.cs[i].hilimit, srs.cs[i].lolimit, shouldrec);  
+      srs.cs[i].isnew=0; 
+      // int bit =pow(2,i);
+      // if((hc&bit)==bit){
+        clpub(devtopic, payload);
+      // } 
+    }
+    for (int i=0; i<srs.numti; i++){
+      shouldrec = isNewRec(srs.ti[i].rec, srs.ti[i].isnew);
+      sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.ti[i].sr, srs.ti[i].onoff, shouldrec);
+      srs.ti[i].isnew=0;
+      int bit =pow(2,i);
+      if((hc&bit)==bit){
+        clpub(devtopic, payload);
+      }
+    }
 }
+
+// void Reqs::pubStateOld(int hc){
+//   Serial.println(hc);
+//   char devtopic[20];
+//   strcpy(devtopic,cdevid);
+//   strcat(devtopic,"/srstate");  
+//   char payload[200];
+//   bool shouldrec = 0;
+//   for( int i=0; i<srs.numsr; i++){
+//     int bit =pow(2,i);
+//     if((hc&bit)==bit){
+//       iscsidx_t ici = getTypeIdx(i);
+//       if (ici.srtype==0){//se
+//         shouldrec = isNewRec(srs.se[ici.idx].rec, srs.se[ici.idx].isnew);
+//         sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.se[ici.idx].sr, srs.se[ici.idx].reading, shouldrec);
+//         srs.se[ici.idx].isnew=0;
+//       }else if (ici.srtype==1){//cs
+//         shouldrec = isNewRec(srs.cs[ici.idx].rec, srs.cs[ici.idx].isnew);
+//         sprintf(payload, "{\"id\":%d, \"darr\":[%d, %d, %d, %d], \"new\":%d}", srs.cs[ici.idx].sr, srs.cs[ici.idx].reading, srs.cs[ici.idx].onoff, srs.cs[ici.idx].hilimit, srs.cs[ici.idx].lolimit, shouldrec);  
+//         srs.cs[ici.idx].isnew=0;    
+//       }else{//ti
+//         shouldrec = isNewRec(srs.ti[ici.idx].rec, srs.ti[ici.idx].isnew);
+//         sprintf(payload, "{\"id\":%d, \"darr\":[%d], \"new\":%d}", srs.ti[ici.idx].sr, srs.ti[ici.idx].onoff, shouldrec);
+//         srs.ti[ici.idx].isnew=0;
+//       }
+//       clpub(devtopic, payload);
+//     }
+//   }
+// }
 
 void Reqs::pubTimr(){
   char devtopic[20];

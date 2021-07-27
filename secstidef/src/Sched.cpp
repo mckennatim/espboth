@@ -58,7 +58,8 @@ void Sched::adjRelay(int sr, cs_t& te){
     //     digitalWrite(prgs.prg[i].port, relayState); 
     //   }
     // }
-  } 
+  }    
+  // printf("relayState = %d", relayState);
 }
 
 void Sched::ckRelays(){
@@ -69,8 +70,8 @@ void Sched::ckRelays(){
         //cannot change a se reading from afar
         break;
       case 1:
-        if(srs.cs[ici.idx].onoff != digitalRead(prgs.prg[i].port)){
-          digitalWrite(prgs.prg[i].port, srs.cs[ici.idx].onoff);
+        if(srs.cs[i].onoff != digitalRead(prgs.prg[i].port)){
+          digitalWrite(prgs.prg[i].port, srs.cs[i].onoff);
         }
         break;
       case 2:
@@ -152,7 +153,7 @@ void Sched::ckAlarms(){
       }
         break;
       case 1:{
-        cs_t *cs = &srs.cs[0];
+        cs_t *cs = &srs.cs[i];
         cs->hilimit = p->prg[cur][2];
         cs->lolimit = p->prg[cur][3];
         adjRelay(sr,*cs);

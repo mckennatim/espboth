@@ -17,6 +17,21 @@ https://steve.fi/hardware/d1-pins/
 
 ## log
 
+### 7/27/21  16-secstidef-CYURD200solar
+Forget about working without wifi (for now), just make it work for these new conditions
+
+#### 2 relays depending on 1 sensor
+
+    { //prg: {sr,aid,ev,numdata,prg[[]],port,hms}
+      {1,255,1,2,{{0,0,80,78}},D8,1504}, //hxch
+      {1,255,1,2,{{0,0,75,71}},D7,1503}  //tankles
+    }
+
+No longer choosing cs idx by sr, now choosing cs by prg index
+
+Trying to separate sensor readings and update from what happens after. You should just be able to check all your sensor values.
+
+
 ### 7/15/21  15-secstidef-CYURD200solar
 secstidef stands for sensors, controlled sensors(like thermostats), timers and def(ault function) - the curent goal of modifying the code so it doesn't spin its wheels without the internet.
 

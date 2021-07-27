@@ -1,5 +1,6 @@
 #include "CONFIG.h"
-/*INSTRUCTIONS
+/*CONFIG_CYURD200solar.cpp
+INSTRUCTIONS
 * be sure to modify FLAGS for HAYpROGS and HAYtIMRS
 */
 
@@ -84,9 +85,9 @@ const portsin_t inpo {
 /*SE constant declarations*/  
 const sen_t SE {
   1,//number of different sensor types
-  3,//number of sensors(numsens)
+  4,//number of sensors(numsens)
   {
-    {1, {0,1,2}, "temp", "DS18b20a"}
+    {1, {0,1,2,3}, "temp", "DS18b20a"}
   }
 };
 /*------------------------------------------------------
@@ -94,7 +95,7 @@ CONFIG extern structures (initial values, changeable)*/
 /*srs extern data structure initalization
 state of relays and sensors */ 
 srs_t srs {
-  3,//numsr
+  4,//numsr
   1,//sumse
   {{2,45,1,0}},//outdoor temp
   3,//numcs
