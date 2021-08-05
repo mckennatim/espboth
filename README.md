@@ -17,6 +17,58 @@ https://steve.fi/hardware/d1-pins/
 
 ## log
 
+### 8/5/21 17-secstidif-CYURD200solar
+new directory with different name
+
+secstidif = Sensors-Contolled_Sensors-Timers-Differential_Controller are all the functions built into this codebase.
+
+CYURD200solar = CYURD200 is the microcontrollers id, whose owner is tobinmckenna@gmail.com and which is running his solar project. It is also the name of the configuration file CONFUG_CYURD200solar that has been copied into CONFIG.cpp and CONFIG.h. This configuration implements 
+
+    /*SERVER
+    dev extern device variables*/
+    char devid[9]="CYURD200";
+    char owner[254]="tobinmckenna@gmail.com";
+    char pwd[24]="xxxxx";
+    char mqtt_server[60]="sitebuilt.net";
+    char mqtt_port[6]="1884";
+    /*dev*/
+
+    srs_t srs {
+      4,//numsr (se+cs)
+      4,//numse of just sensors
+      {//se:{sr,reading,rec,isnew}
+        {0,45,1,0},//solar temp J9
+        {1,45,1,0},//tank temp J5
+        {2,45,1,0},//slab temp J4
+        {3,45,1,0}//outdoor temp J8
+      },
+      2,//numcs
+      {//cs:{sr,reading,onoff,hi,lo,isnew}
+        {1,120,0,138,100,1,0}, //heatexch
+        {1,121,0,180,140,1,0}  //tankles
+      }, 
+      0,//numti
+      {},
+      1,//numdi difference control
+      {/*di:{sa,sb,don,doff,maxa.maxb,port,onoff,rec,isnew}
+            {solar,tank, solar-tank} 
+      */
+        {0,1,6,2,200,200,D1,0,1,0}
+      }
+    };
+    /*prgs extern data structure initalization*/ 
+    prgs_t prgs{
+      2,//numprgs
+      { //prg: {sr,aid,ev,numdata,prg[[hr,min,max,min]],port,hms}
+        {1,255,1,2,{{0,0,80,78}},D8,1504}, //hxch
+        {1,255,1,2,{{0,0,75,71}},D7,1503}  //tankles
+      }
+    };
+
+Solar  = Controller for Tobin's Solar augmented heating system which adds solar panels, a drain down tank, a storage tank and diverters to existing tankles DHW + heat exchanger feeding radiant and baseboard heat.
+
+* copied dependencies to lib_deps in platformio.ini. Hopefully the compiler will realize what is needed and go and get them.
+
 ### 7/27/21  16-secstidef-CYURD200solar
 Forget about working without wifi (for now), just make it work for these new conditions
 

@@ -4,17 +4,8 @@
   #include <TimeLib.h>
   #include <TimeAlarms.h>
   #include <ESP8266WebServer.h>
-  // #include <Arduino.h>//if CUSTOM CODE
-
-  /*CONFI_CYUTD200solar.h
-  INSTRUCTIONS
-  MODIFY this file where indicated for srs_t , prgs_t
-  */
 	
   #define sizeOf(a) (sizeof(a) / sizeof(a[0]))
-
-  void customInit();
-  void customLoop();
 
   /*dev */
   extern char devid[9];
@@ -82,28 +73,14 @@
     bool rec; 
     bool isnew;  
   };
-  struct di_t {//diff control
-    int sa;
-    int sb; 
-    int don;
-    int doff;
-    int maxa;
-    int maxb;
-    int port;
-    bool onoff;
-    bool rec;
-    bool isnew;
-  };
   struct srs_t {
     int numsr;
     int numse;
-    se_t se[4];/*MODIFY*/
+    se_t se[2];
     int numcs;
-    cs_t cs[2];/*MODIFY*/
+    cs_t cs[1];
     int numti;
-    ti_t ti[0];/*MODIFY*/
-    int numdi;
-    di_t di[1];/*MODIFY*/
+    ti_t ti[1];
   };
   extern srs_t srs;
    /*srs data structure declarations*/  
@@ -120,7 +97,7 @@
   };
   struct prgs_t{
     int numprgs;
-    prg_t prg[2];/*MODIFY*/
+    prg_t prg[1];
   };
   extern prgs_t prgs;
    /*prg data structure declarations*/  

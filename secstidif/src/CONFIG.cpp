@@ -43,14 +43,11 @@ void customLoop() {
 
 
 /*DESCRIPTION
-Cascada 
-Pond D5 OUT when on acivates lohi water circuit+relay
-  and pond pumps relay (120V)
-Garden D6 & D7 OUT irrigation activate (24V)
-Transformer D8 activated when either D5,D6 or D7 hi
-hay NO sensors connected to esp8266
-CONFIG_CYURD116cascada running on espboth/secsti
-has CUSTOM CODE
+Solar 
+Controller for Tobin's Solar augmented heating system which adds solar panels, a drain down tank, a storage tank and diverters to existing tankles DHW + heat exchanger feeding radiant and baseboard heat.
+
+CONFIG_CYURD200solar running on espboth/secstidif
+has no CUSTOM CODE
 */
 
 /*LOCID 10-12ParleyVale
@@ -120,7 +117,7 @@ srs_t srs {
 /*prgs extern data structure initalization*/ 
 prgs_t prgs{
   2,//numprgs
-  { //prg: {sr,aid,ev,numdata,prg[[]],port,hms}
+  { //prg: {sr,aid,ev,numdata,prg[[hr,min,max,min]],port,hms}
     {1,255,1,2,{{0,0,80,78}},D8,1504}, //hxch
     {1,255,1,2,{{0,0,75,71}},D7,1503}  //tankles
   }
