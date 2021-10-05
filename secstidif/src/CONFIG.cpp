@@ -56,6 +56,7 @@ has no CUSTOM CODE
 
 /*SERVER
 dev extern device variables*/
+bool haywifi=true;
 char devid[9]="CYURD200";
 char owner[254]="tobinmckenna@gmail.com";
 char pwd[24]="geniot";

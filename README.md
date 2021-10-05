@@ -1,3 +1,12 @@
+# README EspBoth
+
+## greenfield setup windows10 (not WSL)
+1. install vscode
+2. install platformio extension
+can't find com port
+3. install wemos driver goto https://www.wemos.cc/en/latest/ch340_driver.html. install driver with device plugged in
+
+
 ## resources
 
 https://tttapa.github.io/ESP8266/Chap04%20-%20Microcontroller.html

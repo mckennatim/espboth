@@ -97,17 +97,24 @@ void getOnline(){
   readConfig();
   //Local intialization. Once its business is done, there is no need to keep it around
   WiFiManager wifiManager;
+  /*to solve blocking problem if wifi is down add portalTimeout*/
+  wifiManager.setConfigPortalTimeout(120);
+  Serial.print("haywifi: ");
+  Serial.println(haywifi);
   //reset settings - for testing
-  // wifiManager.resetSettings();
+  //wifiManager.resetSettings();
   //fetches ssid and pass and tries to connect
   //if it does not connect it starts an access point with the specified name
   //and goes into a blocking loop awaiting configuration
   if (!wifiManager.autoConnect("connectEspAP")) {
+    //this code runs on portal timout and drops through and out of autoconnect
     Serial.println("failed to connect and hit timeout");
-    delay(3000);
-    //reset and try again, or maybe put it to deep sleep
-    ESP.reset();
+    // ESP.reset();
     delay(5000);
+    haywifi=0;
+    Serial.print("haywifi: ");
+    Serial.println(haywifi);
+    Serial.println("5 sec later: dropping out of autoconnect no haywifi");
   }
 
   Serial.println("connected...yeey :)");

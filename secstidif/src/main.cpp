@@ -200,7 +200,13 @@ void getTime(){
 }
 
 void dailyAlarm(){
+  if(haywifi==0){
+    haywifi=1;
+    getOnline();
+  }
   Serial.println("in daily alarm");
+  Serial.print("assume haywifi: ");
+  Serial.println(haywifi);
   Serial.println(devid);
   int minu = (10*((int)devid[6]-'0')+(int)devid[7]-'0')%16;
   Serial.print(hour());
@@ -222,7 +228,6 @@ void setup(){
 time_t before = 0;
 time_t schedcrement = 0;
 time_t inow;
-int mqctr = 10;
 
 void loop() {
   Alarm.delay(100);
@@ -231,14 +236,10 @@ void loop() {
     req.processInc();
     NEW_MAIL=0;
   } 
-  
-  if(!client.connected()){
-    mqctr -= 1;
-    if(mqctr >0){
-      Serial.print("mqctr = ");
-      Serial.println(mqctr);
-      mq.reconn(client);
-    }
+  // Serial.print("haywifi: ");
+  // Serial.println(haywifi);
+  if(!client.connected() && haywifi){
+    mq.reconn(client);
   }else{
     client.loop();
   }  

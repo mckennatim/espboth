@@ -17,6 +17,7 @@
   void customLoop();
 
   /*dev */
+  extern bool haywifi;
   extern char devid[9];
 	extern char owner[254];
 	extern char pwd[24];
